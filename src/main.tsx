@@ -14,6 +14,7 @@ import LoginPage from "./pages/auth/login";
 import Home from "./pages/home";
 
 import "./index.css";
+import InventoryPage from "./pages/inventory";
 
 const router = createBrowserRouter([
   {
@@ -25,6 +26,7 @@ const router = createBrowserRouter([
     element: <MainLayout />,
     children: [
       { path: "/", index: true, element: <Home /> },
+      { path: "/inventory", element: <InventoryPage /> },
       {
         path: "*",
         element: <NotFoundPage />,
