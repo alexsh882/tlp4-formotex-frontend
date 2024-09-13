@@ -45,13 +45,11 @@ export default function Login() {
       navigate("/");
     } catch (err) {
       const error = err as AxiosError;
-      console.log(error.code);
-      console.log(error);
       if (error.code === "ERR_NETWORK") {
         setErrorMessage("Error de conexión, intente nuevamente más tarde.");
       }
 
-      if (error.response?.status === 401) {
+      if (error.response?.status === 400 || error.response?.status === 401) {
         setErrorMessage("Credenciales inválidas");
       }
     }
