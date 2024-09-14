@@ -30,11 +30,8 @@ export default function AuthProvider({
   const { value: token, setItem: setToken } = useLocalStorage("token");
 
   const getUser = useCallback(async () => {
-    console.log("getUser", token);
-
     if (!token) return null;
     const user = await getUserProfile({ token });
-    console.log("getUser", user);
 
     return user;
   }, [token]);
@@ -72,7 +69,6 @@ export default function AuthProvider({
   const loading = userLoading;
 
   const isAuthenticated = !!token && !!user && !loading;
-  console.log("contexto:", { isAuthenticated, loading, user });
 
   return (
     <AuthContext.Provider
