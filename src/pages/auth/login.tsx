@@ -1,9 +1,18 @@
 import signInBg from "@/assets/img/sign-in-bg.jpg";
 // import { Logo } from "@/components/svg/logo";
 import SignIn from "@/features/auth/components/login";
-import { Link } from "react-router-dom";
+import useAuth from "@/features/auth/hooks/use-auth";
+import { Link, Navigate } from "react-router-dom";
 
 export default function LoginPage() {
+  const { isAuthenticated, loading } = useAuth();
+
+  if (isAuthenticated && !loading) {
+    console.log("en Main", { isAuthenticated, loading });
+
+    return <Navigate to="/" />;
+  }
+
   return (
     <main className="h-full py-10 px-4 md:px-8 md:py-4 xl:p-0 flex items-center">
       <div className="h-full border rounded-lg flex mx-auto lg:px-0 w-full lg:max-w-6xl xl:max-w-max overflow-hidden shadow-md">

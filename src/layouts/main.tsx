@@ -1,5 +1,5 @@
 import useAuth from "@/features/auth/hooks/use-auth";
-import Header from "@/features/ui/header";
+import Aside from "@/features/ui/aside";
 import { Navigate, Outlet } from "react-router-dom";
 
 export default function MainLayout() {
@@ -13,7 +13,7 @@ export default function MainLayout() {
 
   return (
     <div className="flex flex-col h-full w-full font-thin">
-      <Header />
+      <Aside />
       <Outlet />
     </div>
   );
