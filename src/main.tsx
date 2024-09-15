@@ -10,7 +10,7 @@ import LoginPage from "./pages/auth/login";
 import Home from "./pages/home";
 
 import "./index.css";
-import InventoryPage from "./pages/inventory";
+import InventoryPage from "./pages/inventory-entries";
 import { ThemeProvider } from "./features/ui/theme/context/provider";
 
 const router = createBrowserRouter([
