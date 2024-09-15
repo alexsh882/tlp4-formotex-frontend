@@ -5,7 +5,7 @@ import { createContext, useCallback, useEffect } from "react";
 
 import { SignInParams, signIn as signInService } from "../services/auth";
 
-import { User } from "../interfaces/user";
+import { TUser } from "../interfaces/user";
 import { getUserProfile } from "@/features/profile/services/profile";
 // import { AxiosError } from "axios";
 
@@ -13,7 +13,7 @@ type AuthContextType = {
   signIn: (user: SignInParams) => Promise<void>;
   signOut: () => void;
 } & {
-  user: User | null;
+  user: TUser | null;
   token: string | null;
   isAdmin: boolean;
   isAuthenticated: boolean;
@@ -40,7 +40,7 @@ export default function AuthProvider({
     data: user,
     isLoading: userLoading,
     refetch: refetchUser,
-  } = useQuery<User | null>({
+  } = useQuery<TUser | null>({
     queryKey: ["user", token],
     queryFn: getUser,
     enabled: !!token,

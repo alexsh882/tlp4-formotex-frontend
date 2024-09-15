@@ -30,7 +30,7 @@ export default function EquipmentList(props: EquipmentsListProps) {
         </TableHeader>
         <TableBody>
           {props.equipments.map((equipment) => (
-            <TableRow key={equipment.equipment_type_id}>
+            <TableRow key={equipment.equipment_id}>
               <TableCell className="font-medium">
                 {equipment.make.name}
               </TableCell>

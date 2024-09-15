@@ -1,4 +1,4 @@
-import { User } from "@/features/auth/interfaces/user";
+import { TUser } from "@/features/auth/interfaces/user";
 import { api } from "@/features/common/api";
 
 type UserProfileParams = {
@@ -6,7 +6,7 @@ type UserProfileParams = {
 };
 
 export async function getUserProfile(params: UserProfileParams) {
-  const response = await api.get<User>("api/auth/profile", {
+  const response = await api.get<TUser>("api/auth/profile", {
     headers: {
       Authorization: `Bearer ${params.token}`,
     },

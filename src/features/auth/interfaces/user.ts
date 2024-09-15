@@ -1,6 +1,6 @@
 import { Roles } from "../constants/roles";
 
-export type User = {
+export type TUser = {
   user_id: string;
   names: string;
   username: string;

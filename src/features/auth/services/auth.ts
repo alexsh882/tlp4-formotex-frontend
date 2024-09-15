@@ -1,5 +1,5 @@
 import { api } from "@/features/common/api";
-import { User } from "../interfaces/user";
+import { TUser } from "../interfaces/user";
 
 export type SignInParams = {
   username: string;
@@ -7,7 +7,7 @@ export type SignInParams = {
 };
 export type SignInResponse = {
   token: string;
-  user: User;
+  user: TUser;
 };
 
 export async function signIn(params: SignInParams) {
