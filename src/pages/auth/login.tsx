@@ -1,4 +1,4 @@
-import signInBg from "@/assets/img/sign-in-bg.jpg";
+import signInBg from "@/assets/img/sign-in-bg.png";
 // import { Logo } from "@/components/svg/logo";
 import SignIn from "@/features/auth/components/login";
 import useAuth from "@/features/auth/hooks/use-auth";
@@ -20,10 +20,10 @@ export default function LoginPage() {
           {/* TODO: Maybe limit the image's width or height to prevent a blurry effect */}
           <img src={signInBg} className="object-contain xl:min-w-[734px]" />
         </section>
-        <section className="flex bg-white flex-col justify-center gap-3 p-4 py-2 text-lg xl:w-2/3 md:px-10 w-full max-h-min">
+        <section className="flex bg-primary-foreground flex-col justify-center gap-3 p-4 py-2 text-lg xl:w-2/3 md:px-10 w-full max-h-min">
           <Link to="/" className="flex items-center max-w-4xl">
             {/* <Logo className="h-24 aspect-square" /> */}
-            <h1 className="font-sans-accent text-7xl text-blue-700">
+            <h1 className="font-sans-accent text-7xl text-primary">
               FormoteX
             </h1>
           </Link>
