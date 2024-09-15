@@ -8,9 +8,10 @@ import {
   DropdownMenuTrigger,
 } from "@/components/shadcn/ui/dropdown-menu";
 import { useTheme } from "../hooks/use-theme";
+import { AvailableThemes } from "../../const/available-themes";
 
 export function ModeToggle() {
-  const { setTheme } = useTheme();
+  const { theme: activeTheme, setTheme } = useTheme();
 
   return (
     <DropdownMenu>
@@ -22,15 +23,17 @@ export function ModeToggle() {
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => setTheme("light")}>
-          Light
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("dark")}>
-          Dark
-        </DropdownMenuItem>
-        <DropdownMenuItem onClick={() => setTheme("system")}>
-          System
-        </DropdownMenuItem>
+        {AvailableThemes.map((theme) => {
+          if (activeTheme === theme) {
+            return null;
+          }
+
+          return (
+            <DropdownMenuItem key={theme} onClick={() => setTheme(theme)}>
+              {theme.charAt(0).toUpperCase() + theme.slice(1)}
+            </DropdownMenuItem>
+          );
+        })}
       </DropdownMenuContent>
     </DropdownMenu>
   );
