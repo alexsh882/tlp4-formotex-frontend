@@ -10,10 +10,12 @@ import LoginPage from "./pages/auth/login";
 import Home from "./pages/home";
 
 import "./index.css";
-import InventoryPage from "./pages/inventory-entries";
+import InventoryEntriesPage from "./pages/inventory-entries";
 import { ThemeProvider } from "./features/ui/theme/context/provider";
 import EquipmentTypesPage from "./pages/equipment-types";
 import MakesPage from "./pages/makes";
+import EquipmentsPage from "./pages/equipments";
+import InventoriesPage from "./pages/inventories";
 
 const router = createBrowserRouter([
   {
@@ -25,7 +27,9 @@ const router = createBrowserRouter([
     element: <MainLayout />,
     children: [
       { path: "/", index: true, element: <Home /> },
-      { path: "/inventory", element: <InventoryPage /> },
+      { path: "/inventory", element: <InventoriesPage /> },
+      { path: "/inventory-entries", element: <InventoryEntriesPage /> },
+      { path: "/equipments", element: <EquipmentsPage /> },
       { path: "/equipment-types", element: <EquipmentTypesPage /> },
       { path: "/makes", element: <MakesPage /> },
       {
