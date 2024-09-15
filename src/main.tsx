@@ -13,6 +13,7 @@ import "./index.css";
 import InventoryPage from "./pages/inventory-entries";
 import { ThemeProvider } from "./features/ui/theme/context/provider";
 import EquipmentTypesPage from "./pages/equipment-types";
+import MakesPage from "./pages/makes";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,7 @@ const router = createBrowserRouter([
       { path: "/", index: true, element: <Home /> },
       { path: "/inventory", element: <InventoryPage /> },
       { path: "/equipment-types", element: <EquipmentTypesPage /> },
+      { path: "/makes", element: <MakesPage /> },
       {
         path: "*",
         element: <NotFoundPage />,
