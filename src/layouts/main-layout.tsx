@@ -16,7 +16,7 @@ export default function MainLayout() {
     <div className="flex flex-col h-full w-full font-thin">
       <Aside />
       <Header />
-      <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8 lg:grid-cols-3 xl:grid-cols-3">
+      <main className="overflow-y-scroll max-h-full m-4 sm:mx-20">
         <Outlet />
       </main>
     </div>
