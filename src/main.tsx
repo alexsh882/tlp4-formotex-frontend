@@ -12,6 +12,7 @@ import Home from "./pages/home";
 import "./index.css";
 import InventoryPage from "./pages/inventory-entries";
 import { ThemeProvider } from "./features/ui/theme/context/provider";
+import EquipmentTypesPage from "./pages/equipment-types";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,7 @@ const router = createBrowserRouter([
     children: [
       { path: "/", index: true, element: <Home /> },
       { path: "/inventory", element: <InventoryPage /> },
+      { path: "/equipment-types", element: <EquipmentTypesPage /> },
       {
         path: "*",
         element: <NotFoundPage />,
