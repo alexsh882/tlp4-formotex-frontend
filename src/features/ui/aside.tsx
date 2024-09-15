@@ -5,14 +5,8 @@ import {
   TooltipTrigger,
 } from "@/components/shadcn/ui/tooltip";
 import { cn } from "@/lib/utils";
-import { Home, ListCheck, Users } from "lucide-react";
 import { Link, useResolvedPath } from "react-router-dom";
-
-const TABS = [
-  { label: "Inicio", href: "/", icon: Home },
-  { label: "Inventario", href: "/inventory", icon: ListCheck },
-  { label: "Usuarios", href: "/users", icon: Users },
-];
+import { TABS } from "./const/tabs";
 
 export default function Aside() {
   const { pathname } = useResolvedPath(window.location.pathname);
@@ -35,6 +29,7 @@ export default function Aside() {
               <Tooltip key={tab.href}>
                 <TooltipTrigger asChild>
                   <Link
+                    key={tab.href}
                     to={tab.href}
                     className={`${cn(
                       className,
