@@ -4,13 +4,14 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import AuthProvider from "./features/auth/context/provider";
-import MainLayout from "./layouts/main";
+import MainLayout from "./layouts/main-layout";
 import NotFoundPage from "./pages/not-found";
 import LoginPage from "./pages/auth/login";
 import Home from "./pages/home";
 
 import "./index.css";
 import InventoryPage from "./pages/inventory";
+import { ThemeProvider } from "./features/ui/theme/context/provider";
 
 const router = createBrowserRouter([
   {
@@ -37,7 +38,9 @@ createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
-        <RouterProvider router={router}></RouterProvider>
+        <ThemeProvider storageKey="vite-ui-theme">
+          <RouterProvider router={router}></RouterProvider>
+        </ThemeProvider>
       </AuthProvider>
     </QueryClientProvider>
   </StrictMode>
