@@ -19,7 +19,7 @@ export default function Aside() {
         <TooltipProvider>
           {TABS.map((tab) => {
             const className = cn({
-              "bg-primary text-primary-foreground transition-colors hover:text-destructive-foreground md:h-8 md:w-8":
+              "bg-primary text-primary-foreground transition-colors md:h-8 md:w-8":
                 activeLink === tab,
               "text-muted-foreground transition-colors hover:text-foreground":
                 activeLink !== tab,
