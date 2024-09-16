@@ -5,4 +5,4 @@ export const ROLES = {
 
 export const ROLE_NAMES = Object.values(ROLES);
 
-export type Roles = (typeof ROLES)[keyof typeof ROLES];
+export type RolesList = (typeof ROLES)[keyof typeof ROLES];
