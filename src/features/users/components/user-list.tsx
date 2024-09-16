@@ -10,6 +10,9 @@ import {
 } from "@/components/shadcn/ui/table";
 import { TUser } from "../interfaces/user";
 import { Button } from "@/components/shadcn/ui/button";
+import UserModal from "./user-modal";
+import { RolesEnum } from "../consts/roles";
+import UserDeleteButton from "./user-delete-button";
 
 type UserListProps = {
   users: TUser[];
@@ -35,9 +38,14 @@ export default function UserList(props: UserListProps) {
               <TableCell className="">{user.username}</TableCell>
               <TableCell className="">{user.user_role.name}</TableCell>
               <TableCell className="flex justify-end gap-2">
-                <Button variant="default">Ver</Button>
-                <Button variant="secondary">Editar</Button>
-                <Button variant="destructive">Eliminar</Button>
+                <UserModal
+                  button={<Button variant="secondary">Editar</Button>}
+                  user={{
+                    ...user,
+                    role_id: user.user_role.role_id,
+                  }}
+                />
+                <UserDeleteButton user_id={user.user_id} />
               </TableCell>
             </TableRow>
           ))}

@@ -1,4 +1,6 @@
+import { Button } from "@/components/shadcn/ui/button";
 import UserList from "@/features/users/components/user-list";
+import UserModal from "@/features/users/components/user-modal";
 import { getUsers } from "@/features/users/services/user";
 import { useQuery } from "@tanstack/react-query";
 import { useSearchParams } from "react-router-dom";
@@ -21,10 +23,11 @@ export default function UsersPage() {
 
   return (
     <>
-      <hgroup>
+      <hgroup className="flex justify-between">
         <h1 className="text-4xl font-sans-accent mb-6">
           Usuarios de la aplicación
         </h1>
+        <UserModal button={<Button variant="default">Nuevo Usuario</Button>} />
       </hgroup>
       {isLoading && <p>Cargando...</p>}
 
