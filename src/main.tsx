@@ -16,6 +16,7 @@ import EquipmentTypesPage from "./pages/equipment-types";
 import MakesPage from "./pages/makes";
 import EquipmentsPage from "./pages/equipments";
 import InventoriesPage from "./pages/inventories";
+import UsersPage from "./pages/users";
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,7 @@ const router = createBrowserRouter([
       { path: "/equipments", element: <EquipmentsPage /> },
       { path: "/equipment-types", element: <EquipmentTypesPage /> },
       { path: "/makes", element: <MakesPage /> },
+      { path: "/users", element: <UsersPage /> },
       {
         path: "*",
         element: <NotFoundPage />,
