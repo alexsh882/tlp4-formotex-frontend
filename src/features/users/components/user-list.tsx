@@ -16,8 +16,6 @@ type UserListProps = {
 };
 
 export default function UserList(props: UserListProps) {
-  console.log("UserList props: ", props);
-
   return (
     <>
       <Table>
@@ -46,7 +44,7 @@ export default function UserList(props: UserListProps) {
         </TableBody>
         <TableFooter>
           <TableRow>
-            <TableCell colSpan={2}>Total</TableCell>
+            <TableCell colSpan={3}>Total</TableCell>
             <TableCell className="text-right">{props.users.length}</TableCell>
           </TableRow>
         </TableFooter>
