@@ -1,5 +1,5 @@
 import { api } from "@/features/common/api";
-import { TUser } from "../interfaces/user";
+import { TUser } from "@/features/users/interfaces/user";
 
 export type SignInParams = {
   username: string;

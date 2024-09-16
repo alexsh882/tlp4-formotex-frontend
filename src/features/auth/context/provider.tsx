@@ -5,8 +5,8 @@ import { createContext, useCallback, useEffect } from "react";
 
 import { SignInParams, signIn as signInService } from "../services/auth";
 
-import { TUser } from "../interfaces/user";
 import { getUserProfile } from "@/features/profile/services/profile";
+import { TUser } from "@/features/users/interfaces/user";
 // import { AxiosError } from "axios";
 
 type AuthContextType = {

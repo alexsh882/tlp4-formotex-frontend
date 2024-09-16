@@ -1,5 +1,5 @@
-import { TUser } from "@/features/auth/interfaces/user";
 import { api } from "@/features/common/api";
+import { TUser } from "@/features/users/interfaces/user";
 
 type UserProfileParams = {
   token: string;

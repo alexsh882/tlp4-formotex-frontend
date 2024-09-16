@@ -1,4 +1,4 @@
-import { Roles } from "../constants/roles";
+import { Roles } from "@/features/auth/constants/roles";
 
 export type TUser = {
   user_id: string;
