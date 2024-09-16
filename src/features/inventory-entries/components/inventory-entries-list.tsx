@@ -39,8 +39,13 @@ export default function InventoryEntriesList(props: InventoriesListProps) {
               <TableCell className="">
                 {formatDateUTC(inventoryEntries.date_in)}
               </TableCell>
-              <TableCell title={inventoryEntries.equipment.characteristics} className="">
-                {inventoryEntries.equipment.make.name + " - " + inventoryEntries.equipment.model}
+              <TableCell
+                title={inventoryEntries.equipment.characteristics}
+                className=""
+              >
+                {inventoryEntries.equipment.make.name +
+                  " - " +
+                  inventoryEntries.equipment.model}
               </TableCell>
               <TableCell className="">
                 <BadgeStatus status={inventoryEntries.status} />
@@ -49,7 +54,7 @@ export default function InventoryEntriesList(props: InventoriesListProps) {
                 {inventoryEntries.inventory.name}
               </TableCell>
               <TableCell className="">
-                {inventoryEntries.user.names}
+                {inventoryEntries.user?.names ?? "Sin usuario"}
               </TableCell>
               <TableCell className="text-right">
                 <Button variant="secondary">Editar</Button>
