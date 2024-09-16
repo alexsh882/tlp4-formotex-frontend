@@ -29,6 +29,10 @@ export default function AuthProvider({
 }) {
   const { value: token, setItem: setToken } = useLocalStorage("token");
 
+  if (token) {
+    api.defaults.headers.Authorization = `Bearer ${token}`;
+  }
+
   const getUser = useCallback(async () => {
     if (!token) return null;
     const user = await getUserProfile({ token });
