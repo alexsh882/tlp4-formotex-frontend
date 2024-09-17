@@ -11,6 +11,7 @@ import {
 import { Button } from "@/components/shadcn/ui/button";
 import { TInventory } from "../interfaces/inventory";
 import InventoryModal from "./inventory-modal";
+import InventoryDeleteButton from "./inventory-delete-button";
 
 type InventoriesListProps = {
   inventories: TInventory[];
@@ -36,7 +37,7 @@ export default function InventoriesList(props: InventoriesListProps) {
                   inventory={inventory}
                   button={<Button variant="secondary">Editar</Button>}
                 />
-                <Button variant="destructive">Eliminar</Button>
+                <InventoryDeleteButton inventory_id={inventory.inventory_id} />
               </TableCell>
             </TableRow>
           ))}

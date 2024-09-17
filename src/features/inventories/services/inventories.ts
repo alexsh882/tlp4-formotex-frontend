@@ -45,3 +45,15 @@ export async function updateInventory(inventory: TInventoryUpdate) {
     throw error;
   }
 }
+
+export async function deleteInventory(inventory_id: string) {
+  try {
+    const response = await api.delete<TInventory>(`/api/inventories/${inventory_id}`);
+    console.log("deleteInventory response: ", response.data);
+
+    return response.data;
+  } catch (error) {
+    console.error("deleteInventory error: ", error);
+    throw error;
+  }
+}
