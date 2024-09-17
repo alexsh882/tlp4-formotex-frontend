@@ -47,3 +47,15 @@ export async function updateEquipment(equipment: TEquipmentUpdate) {
     throw error;
   }
 }
+
+export async function deleteEquipment(equipment_id: string) {
+  try {
+    const response = await api.delete<TEquipment>(`/api/equipments/${equipment_id}`);
+    console.log("deleteEquipment response: ", response.data);
+
+    return response.data;
+  } catch (error) {
+    console.error("deleteEquipment error: ", error);
+    throw error;
+  }
+}
