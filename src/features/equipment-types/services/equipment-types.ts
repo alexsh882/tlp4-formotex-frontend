@@ -50,3 +50,17 @@ export async function createEquipmentType(equipmentType: TEquipmentTypeCreate) {
     throw error;
   }
 }
+
+export async function deleteEquipmentType(equipment_type_id: string) {
+  try {
+    const response = await api.delete<TEquipmentType>(
+      `/api/equipment-types/${equipment_type_id}`
+    );
+    console.log("deleteEquipmentType response: ", response.data);
+
+    return response.data;
+  } catch (error) {
+    console.error("deleteEquipmentType error: ", error);
+    throw error;
+  }
+}

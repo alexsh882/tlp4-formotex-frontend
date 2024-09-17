@@ -11,6 +11,7 @@ import {
 } from "@/components/shadcn/ui/table";
 import { Button } from "@/components/shadcn/ui/button";
 import EquipmentTypeModal from "./equipment-type-modal";
+import EquipmentTypeDeleteButton from "./equipment-type-delete-button";
 
 type EquipmentTypesListProps = {
   equipmentTypes: TEquipmentType[];
@@ -38,7 +39,7 @@ export default function EquipmentTypesList(props: EquipmentTypesListProps) {
                   button={<Button variant="secondary">Editar</Button>}
                   equipmentType={equipmentType}
                 />
-                <Button variant="destructive">Eliminar</Button>
+                <EquipmentTypeDeleteButton equipment_type_id={equipmentType.equipment_type_id} />
               </TableCell>
             </TableRow>
           ))}
