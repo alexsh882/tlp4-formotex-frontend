@@ -2,6 +2,7 @@ import useAuth from "@/features/auth/hooks/use-auth";
 import Aside from "@/features/ui/aside";
 import Header from "@/features/ui/header";
 import { Navigate, Outlet } from "react-router-dom";
+import { Toaster } from "@/components/shadcn/ui/toaster";
 
 export default function MainLayout() {
   const { isAuthenticated, loading } = useAuth();
@@ -17,6 +18,7 @@ export default function MainLayout() {
       <main className="overflow-y-auto max-h-full m-4 sm:mx-20">
         <Outlet />
       </main>
+      <Toaster />
     </div>
   );
 }
