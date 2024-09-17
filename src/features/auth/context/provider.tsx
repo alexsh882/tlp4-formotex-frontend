@@ -64,7 +64,7 @@ export default function AuthProvider({
     }
     api.defaults.headers.Authorization = `Bearer ${token}`;
     refetchUser();
-  }, [token]);
+  }, [refetchUser, token]);
 
   const signOut = () => {
     setToken(null);
