@@ -75,6 +75,7 @@ export default function InventoryEntryForm({
   const form = useForm<z.infer<typeof inventoryEntrySchema>>({
     resolver: zodResolver(inventoryEntrySchema),
     defaultValues: {
+      inventory_entry_id: inventoryEntry?.inventory_entry_id || undefined,
       serial: inventoryEntry?.serial || "",
       status: inventoryEntry?.status || undefined,
       date_in: inventoryEntry?.date_in || undefined,
@@ -107,18 +108,24 @@ export default function InventoryEntryForm({
 
   const handleSubmit = async (values: z.infer<typeof inventoryEntrySchema>) => {
     try {
-      console.log("values: ", values);
-
       await (inventoryEntry?.inventory_entry_id
         ? mutateAsyncUpdate(values as TInventoryEntryUpdate)
         : mutateAsyncCreate(values as TInventoryEntryCreate));
 
       await queryClient.invalidateQueries({
-        queryKey: ["inventory-entries"],
+        queryKey: [
+          "inventory-entries",
+          "inventory-entry",
+          inventoryEntry?.inventory_entry_id,
+        ],
         type: "all",
       });
-
-      form.reset();
+      if (inventoryEntry?.inventory_entry_id) {
+        await queryClient.invalidateQueries({
+          queryKey: ["inventory-entry", inventoryEntry?.inventory_entry_id],
+          type: "all",
+        });
+      }
 
       navigation("/inventory-entries");
 
@@ -126,6 +133,7 @@ export default function InventoryEntryForm({
         title: "Ingreso registrado",
         description: "El ingreso ha sido guardado exitosamente.",
       });
+      form.reset();
     } catch (error) {
       if (error instanceof AxiosError) {
         // setErrorMessage(error.response?.data.message);
@@ -240,7 +248,12 @@ export default function InventoryEntryForm({
               <FormLabel>Inventario</FormLabel>
               <Select onValueChange={field.onChange} defaultValue={field.value}>
                 <FormControl>
-                  <SelectTrigger>
+                  <SelectTrigger
+                    className={cn(
+                      "pl-3 text-left font-normal",
+                      !field.value && "text-muted-foreground"
+                    )}
+                  >
                     <SelectValue placeholder="Seleccionar inventario" />
                   </SelectTrigger>
                 </FormControl>
@@ -262,7 +275,7 @@ export default function InventoryEntryForm({
             </FormItem>
           )}
         />
-        
+
         <FormField
           control={form.control}
           name="status"
@@ -271,8 +284,13 @@ export default function InventoryEntryForm({
               <FormLabel>Estado</FormLabel>
               <Select onValueChange={field.onChange} defaultValue={field.value}>
                 <FormControl>
-                  <SelectTrigger>
-                    <SelectValue placeholder="Seleccionar inventario" />
+                  <SelectTrigger
+                    className={cn(
+                      "pl-3 text-left font-normal",
+                      !field.value && "text-muted-foreground"
+                    )}
+                  >
+                    <SelectValue placeholder="Seleccionar estado" />
                   </SelectTrigger>
                 </FormControl>
                 <SelectContent>

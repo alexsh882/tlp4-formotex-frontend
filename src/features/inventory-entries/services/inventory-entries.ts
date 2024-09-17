@@ -21,6 +21,26 @@ export async function getInventoryEntries(params: GetInventoryEntriesParams) {
   }
 }
 
+export async function getInventoryEntry(inventoryEntryId: string | undefined) {
+
+  if (!inventoryEntryId) {
+    throw new Error("getInventoryEntry: inventoryEntryId is required");    
+  }
+
+  try {
+    const response = await api.get<TInventoryEntry>(
+      `/api/inventory-entries/${inventoryEntryId}`
+    );
+    console.log("getInventoryEntry response: ", response.data);
+
+    return response.data;
+  } catch (error) {
+    console.error("getInventoryEntry error: ", error);
+    throw error;
+  }
+}
+
+
 export async function createInventoryEntry(data: TInventoryEntryCreate) {
   try {
     const response = await api.post<TInventoryEntryCreate>("/api/inventory-entries", data);

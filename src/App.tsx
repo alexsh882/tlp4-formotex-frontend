@@ -15,6 +15,7 @@ import EquipmentsPage from "./pages/equipments";
 import InventoriesPage from "./pages/inventories";
 import UsersPage from "./pages/users";
 import InventoryEntryCreate from "./pages/inventory-entries/create";
+import InventoryEntryEdit from "./pages/inventory-entries/edit";
 
 const router = createBrowserRouter([
   {
@@ -32,7 +33,9 @@ const router = createBrowserRouter([
       { path: "/makes", element: <MakesPage /> },
       { path: "/users", element: <UsersPage /> },
       { path: "/inventory-entries", element: <InventoryEntriesPage /> },      
-      { path: "/inventory-entries/create", element: <InventoryEntryCreate /> },      
+      { path: "/inventory-entries/create", element: <InventoryEntryCreate /> },  
+      { path: "/inventory-entries/:inventory_entry_id/edit", element: <InventoryEntryEdit /> },  
+
       {
         path: "*",
         element: <NotFoundPage />,
