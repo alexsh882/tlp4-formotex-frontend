@@ -1,4 +1,6 @@
+import { Button } from "@/components/shadcn/ui/button";
 import InventoriesList from "@/features/inventories/components/inventories-list";
+import InventoryModal from "@/features/inventories/components/inventory-modal";
 import { getInventories } from "@/features/inventories/services/inventories";
 import { useQuery } from "@tanstack/react-query";
 import { useSearchParams } from "react-router-dom";
@@ -18,15 +20,15 @@ export default function InventoriesPage() {
     queryKey: ["inventories", params.toString()],
     queryFn: () => getInventories(params),
   });
-  
 
   return (
     <>
-      <hgroup>
+      <hgroup className="flex justify-between">
         <h1 className="text-4xl font-sans-accent mb-6">Depósitos</h1>
+        <InventoryModal button={<Button variant={"default"}>Agregar nuevo </Button>} />
       </hgroup>
       {isLoading && <p>Cargando...</p>}
-      
+
       {!isLoading && inventories && (
         <InventoriesList inventories={inventories} />
       )}

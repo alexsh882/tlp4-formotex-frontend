@@ -1,4 +1,3 @@
-
 import {
   Table,
   TableBody,
@@ -11,6 +10,7 @@ import {
 } from "@/components/shadcn/ui/table";
 import { Button } from "@/components/shadcn/ui/button";
 import { TInventory } from "../interfaces/inventory";
+import InventoryModal from "./inventory-modal";
 
 type InventoriesListProps = {
   inventories: TInventory[];
@@ -30,11 +30,12 @@ export default function InventoriesList(props: InventoriesListProps) {
         <TableBody>
           {props.inventories.map((inventory) => (
             <TableRow key={inventory.inventory_id}>
-              <TableCell className="font-medium">
-                {inventory.name}
-              </TableCell>
-              <TableCell className="text-right">
-                <Button variant="secondary">Editar</Button>
+              <TableCell className="font-medium">{inventory.name}</TableCell>
+              <TableCell className="space-x-2 text-right">
+                <InventoryModal
+                  inventory={inventory}
+                  button={<Button variant="secondary">Editar</Button>}
+                />
                 <Button variant="destructive">Eliminar</Button>
               </TableCell>
             </TableRow>
