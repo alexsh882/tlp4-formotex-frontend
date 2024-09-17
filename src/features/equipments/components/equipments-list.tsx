@@ -10,6 +10,7 @@ import {
   TableRow,
 } from "@/components/shadcn/ui/table";
 import { Button } from "@/components/shadcn/ui/button";
+import EquipmentModal from "./equipment-modal";
 
 type EquipmentsListProps = {
   equipments: TEquipment[];
@@ -34,14 +35,15 @@ export default function EquipmentList(props: EquipmentsListProps) {
               <TableCell className="font-medium">
                 {equipment.make.name}
               </TableCell>
-              <TableCell className="">
-                {equipment.model}
-              </TableCell>
+              <TableCell className="">{equipment.model}</TableCell>
               <TableCell className="">
                 {equipment.equipment_type.name}
               </TableCell>
-              <TableCell className="text-right">
-                <Button variant="secondary">Editar</Button>
+              <TableCell className="space-x-2 text-right">
+                <EquipmentModal
+                  equipment={equipment}
+                  button={<Button variant="secondary">Editar</Button>}
+                />
                 <Button variant="destructive">Eliminar</Button>
               </TableCell>
             </TableRow>

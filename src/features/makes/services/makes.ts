@@ -3,7 +3,7 @@ import { TMake, TMakeCreate, TMakeUpdate } from "../interfaces/make";
 
 type GetMakesParams = URLSearchParams | undefined;
 
-export async function getMakes(params: GetMakesParams) {
+export async function getMakes(params?: GetMakesParams) {
   try {
     const paramsUrl = params ? "?" + params.toString() : "";
 

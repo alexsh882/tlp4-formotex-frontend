@@ -3,7 +3,7 @@ import { TEquipmentType, TEquipmentTypeCreate, TEquipmentTypeUpdate } from "../i
 
 type GetEquipmentTypesParams = URLSearchParams | undefined;
 
-export async function getEquipmentTypes(params: GetEquipmentTypesParams) {
+export async function getEquipmentTypes(params?: GetEquipmentTypesParams) {
   try {
     const paramsUrl = params ? "?" + params.toString() : "";
 

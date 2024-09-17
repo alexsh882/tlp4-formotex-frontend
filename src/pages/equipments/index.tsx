@@ -1,4 +1,6 @@
 
+import { Button } from "@/components/shadcn/ui/button";
+import EquipmentModal from "@/features/equipments/components/equipment-modal";
 import EquipmentList from "@/features/equipments/components/equipments-list";
 import { getEquipments } from "@/features/equipments/services/equipments";
 import { useQuery } from "@tanstack/react-query";
@@ -23,8 +25,9 @@ export default function EquipmentsPage() {
 
   return (
     <>
-      <hgroup>
-        <h1 className="text-4xl font-sans-accent mb-6">Tipos de Equipos</h1>
+      <hgroup className="flex justify-between">
+        <h1 className="text-4xl font-sans-accent mb-6">Equipos Informáticos</h1>
+        <EquipmentModal button={<Button>Nuevo equipo</Button>} />
       </hgroup>
       {isLoading && <p>Cargando...</p>}
       
