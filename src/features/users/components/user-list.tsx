@@ -11,7 +11,6 @@ import {
 import { TUser } from "../interfaces/user";
 import { Button } from "@/components/shadcn/ui/button";
 import UserModal from "./user-modal";
-import { RolesEnum } from "../consts/roles";
 import UserDeleteButton from "./user-delete-button";
 
 type UserListProps = {

@@ -56,8 +56,7 @@ export default function UserForm({ user, handleOpenChange }: UserFormProps) {
 
   const {
     data: roles,
-    isLoading: isLoadingRoles,
-    error: errorRoles,
+    isLoading: isLoadingRoles
   } = useQuery({
     queryKey: ["roles"],
     queryFn: () => getRoles(),
@@ -77,9 +76,9 @@ export default function UserForm({ user, handleOpenChange }: UserFormProps) {
     values: z.infer<typeof UserFormCreateSchema | typeof UserFormUpdateSchema>
   ) {
     try {
-      user?.user_id
-        ? await mutateAsyncUpdate(values as TUserUpdate)
-        : await mutateAsyncCreate(values as TUserCreate);
+      await (user?.user_id
+        ? mutateAsyncUpdate(values as TUserUpdate)
+        : mutateAsyncCreate(values as TUserCreate));
 
       await queryClient.invalidateQueries({
         queryKey: ["users"],
@@ -204,6 +203,7 @@ export default function UserForm({ user, handleOpenChange }: UserFormProps) {
           <div className="space-x-2">
             <Button
               variant="destructive"
+              type="button"
               onClick={() => handleOpenChange(false)}
             >
               Cancelar
