@@ -1,8 +1,8 @@
-
+import { Button } from "@/components/shadcn/ui/button";
 import InventoryEntriesList from "@/features/inventory-entries/components/inventory-entries-list";
 import { getInventoryEntries } from "@/features/inventory-entries/services/inventory-entries";
 import { useQuery } from "@tanstack/react-query";
-import { useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 
 export default function InventoryEntriesPage() {
   const [params, setParams] = useSearchParams();
@@ -19,15 +19,17 @@ export default function InventoryEntriesPage() {
     queryKey: ["inventory-entries", params.toString()],
     queryFn: () => getInventoryEntries(params),
   });
-  
 
   return (
     <>
-      <hgroup>
+      <hgroup className="flex justify-between">
         <h1 className="text-4xl font-sans-accent mb-6">Inventario</h1>
+        <Link to="/inventory-entries/create">
+          <Button variant="default">Nuevo Ingreso</Button>
+        </Link>
       </hgroup>
       {isLoading && <p>Cargando...</p>}
-      
+
       {!isLoading && inventoryEntries && (
         <InventoryEntriesList inventoryEntries={inventoryEntries} />
       )}

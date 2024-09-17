@@ -9,16 +9,20 @@ import {
   TableRow,
 } from "@/components/shadcn/ui/table";
 import { Button } from "@/components/shadcn/ui/button";
-import { TInventoryEntries } from "../interfaces/inventory-entry";
+import { TInventoryEntry } from "../interfaces/inventory-entry";
 
 import { formatDateUTC } from "@/lib/utils";
 import BadgeStatus from "./badge-status";
+import { useNavigate } from "react-router-dom";
 
 type InventoriesListProps = {
-  inventoryEntries: TInventoryEntries[];
+  inventoryEntries: TInventoryEntry[];
 };
 
 export default function InventoryEntriesList(props: InventoriesListProps) {
+
+  const navigate = useNavigate();
+
   return (
     <>
       <Table>
@@ -34,30 +38,30 @@ export default function InventoryEntriesList(props: InventoriesListProps) {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {props.inventoryEntries.map((inventoryEntries) => (
-            <TableRow key={inventoryEntries.inventory_entry_id}>
+          {props.inventoryEntries.map((inventoryEntry) => (
+            <TableRow key={inventoryEntry.inventory_entry_id}>
               <TableCell className="">
-                {formatDateUTC(inventoryEntries.date_in)}
+                {formatDateUTC(inventoryEntry.date_in.toString())}
               </TableCell>
               <TableCell
-                title={inventoryEntries.equipment.characteristics}
+                title={inventoryEntry.equipment.characteristics}
                 className=""
               >
-                {inventoryEntries.equipment.make.name +
+                {inventoryEntry.equipment.make.name +
                   " - " +
-                  inventoryEntries.equipment.model}
+                  inventoryEntry.equipment.model}
               </TableCell>
               <TableCell className="">
-                <BadgeStatus status={inventoryEntries.status} />
+                <BadgeStatus status={inventoryEntry.status} />
               </TableCell>
               <TableCell className="">
-                {inventoryEntries.inventory.name}
+                {inventoryEntry.inventory.name}
               </TableCell>
               <TableCell className="">
-                {inventoryEntries.user?.names ?? "Sin usuario"}
+                {inventoryEntry.user?.names ?? "Sin usuario"}
               </TableCell>
-              <TableCell className="text-right">
-                <Button variant="secondary">Editar</Button>
+              <TableCell className="space-x-2 text-right">
+                <Button variant="secondary" onClick={() => navigate({pathname: `/inventory-entries/${inventoryEntry.inventory_entry_id}/edit`})}>Editar</Button>
                 <Button variant="destructive">Eliminar</Button>
               </TableCell>
             </TableRow>

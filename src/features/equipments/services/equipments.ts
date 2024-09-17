@@ -7,7 +7,7 @@ import {
 
 type GetEquipmentsParams = URLSearchParams | undefined;
 
-export async function getEquipments(params: GetEquipmentsParams) {
+export async function getEquipments(params?: GetEquipmentsParams) {
   try {
     const paramsUrl = params ? "?" + params.toString() : "";
 

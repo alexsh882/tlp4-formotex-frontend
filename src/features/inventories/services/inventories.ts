@@ -3,7 +3,7 @@ import { TInventory, TInventoryCreate, TInventoryUpdate } from "../interfaces/in
 
 type GetInventoriesParams = URLSearchParams | undefined;
 
-export async function getInventories(params: GetInventoriesParams) {
+export async function getInventories(params?: GetInventoriesParams) {
   try {
     const paramsUrl = params ? "?" + params.toString() : "";
 
