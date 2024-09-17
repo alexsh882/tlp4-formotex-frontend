@@ -7,10 +7,8 @@ import {
   DialogTitle,
   DialogTrigger,
   DialogDescription,
-  DialogFooter,
 } from "@/components/shadcn/ui/dialog";
 import MakeForm from "./make-form";
-import { Button } from "@/components/shadcn/ui/button";
 
 type MakeModalProps = {
   make?: TMake;
@@ -19,15 +17,14 @@ type MakeModalProps = {
 
 export default function MakeModal({ make, button }: MakeModalProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const handleOpenChange = (open: boolean) => {
+    
     setIsOpen(open);
-  };
-
-  const handleSubmit = () => {
-    console.log("Submit");
-
-    handleOpenChange(false);
+    if (!open) {
+      setErrorMessage(null);
+    }
   };
 
   return (
@@ -41,15 +38,14 @@ export default function MakeModal({ make, button }: MakeModalProps) {
             </DialogTitle>
             <DialogDescription></DialogDescription>
           </DialogHeader>
-          <MakeForm make={make} submit={handleSubmit} />
-          <DialogFooter>
-            <Button variant="secondary" onClick={() => handleOpenChange(false)}>
-              Cancelar
-            </Button>
-            <Button variant="default" onClick={handleSubmit}>
-              Guardar
-            </Button>
-          </DialogFooter>
+          <MakeForm
+            make={make}
+            handleOpenChange={handleOpenChange}
+            setErrorMessage={setErrorMessage}
+          />
+          <DialogDescription className="text-destructive">
+            {errorMessage}
+          </DialogDescription>
         </DialogContent>
       </Dialog>
     </>

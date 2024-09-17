@@ -33,7 +33,11 @@ export default function MakesList(props: MakesListProps) {
               <TableCell className="font-medium">{make.name}</TableCell>
               <TableCell className="space-x-2 text-right">
                 <MakeModal
-                  button={<Button variant="secondary">Editar</Button>}
+                  button={
+                    <Button variant="secondary" type="button">
+                      Editar
+                    </Button>
+                  }
                   make={make}
                 />
                 <Button variant="destructive">Eliminar</Button>
