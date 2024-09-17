@@ -1,11 +1,9 @@
 import { api } from "@/features/common/api";
-import { TEquipmentType } from "../interfaces/equipment-type";
-
+import { TEquipmentType, TEquipmentTypeCreate, TEquipmentTypeUpdate } from "../interfaces/equipment-type";
 
 type GetEquipmentTypesParams = URLSearchParams | undefined;
 
 export async function getEquipmentTypes(params: GetEquipmentTypesParams) {
-
   try {
     const paramsUrl = params ? "?" + params.toString() : "";
 
@@ -17,6 +15,38 @@ export async function getEquipmentTypes(params: GetEquipmentTypesParams) {
     return response.data;
   } catch (error) {
     console.error("getEquipmentTypes error: ", error);
+    throw error;
+  }
+}
+
+export async function updateEquipmentType(
+  equipmentType: TEquipmentTypeUpdate
+) {
+  try {
+    const response = await api.patch<TEquipmentType>(
+      `/api/equipment-types/${equipmentType.equipment_type_id}`,
+      equipmentType
+    );
+    console.log("updateEquipmentType response: ", response.data);
+
+    return response.data;
+  } catch (error) {
+    console.error("updateEquipmentType error: ", error);
+    throw error;
+  }
+}
+
+export async function createEquipmentType(equipmentType: TEquipmentTypeCreate) {
+  try {
+    const response = await api.post<TEquipmentType>(
+      "/api/equipment-types",
+      equipmentType
+    );
+    console.log("createEquipmentType response: ", response.data);
+
+    return response.data;
+  } catch (error) {
+    console.error("createEquipmentType error: ", error);
     throw error;
   }
 }
