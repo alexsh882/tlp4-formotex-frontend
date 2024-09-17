@@ -17,6 +17,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { createMake, updateMake } from "../services/makes";
 import { AxiosError } from "axios";
 import { Button } from "@/components/shadcn/ui/button";
+import { useToast } from "@/hooks/use-toast";
 
 type MakeFormProps = {
   make?: TMake;
@@ -30,6 +31,9 @@ export default function MakeForm({
   setErrorMessage,
 }: MakeFormProps) {
   const queryClient = useQueryClient();
+
+  const { toast } = useToast();
+
   const form = useForm<z.infer<typeof makeSchema>>({
     resolver: zodResolver(makeSchema),
     defaultValues: {
@@ -61,6 +65,11 @@ export default function MakeForm({
       await queryClient.invalidateQueries({
         queryKey: ["makes"],
         type: "all",
+      });
+      form.reset();
+      toast({
+        title: "Marca guardada",
+        description: "La marca ha sido guardada exitosamente.",
       });
     } catch (error) {
       if (error instanceof AxiosError) {

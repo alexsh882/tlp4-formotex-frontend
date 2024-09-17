@@ -29,6 +29,7 @@ import { createUser, updateUser } from "../services/user";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { getRoles } from "@/features/roles/services/role";
 import { AxiosError } from "axios";
+import { useToast } from "@/hooks/use-toast";
 
 type UserFormProps = {
   user?: TUserCreate | TUserUpdate;
@@ -37,6 +38,8 @@ type UserFormProps = {
 
 export default function UserForm({ user, handleOpenChange }: UserFormProps) {
   const queryClient = useQueryClient();
+
+  const { toast } = useToast();
 
   const form = useForm<
     z.infer<typeof UserFormCreateSchema | typeof UserFormUpdateSchema>
@@ -86,6 +89,10 @@ export default function UserForm({ user, handleOpenChange }: UserFormProps) {
       });
       form.reset();
       handleOpenChange(false);
+      toast({
+        title: "Usuario guardada",
+        description: "El usuario ha sido guardada exitosamente.",
+      });
     } catch (error) {
       if (error instanceof AxiosError) {
         console.error(error);
