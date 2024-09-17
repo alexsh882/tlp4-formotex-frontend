@@ -7,7 +7,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/shadcn/ui/form";
-import { TMake } from "../interfaces/make";
+import { TMake, TMakeCreate, TMakeUpdate } from "../interfaces/make";
 import { Input } from "@/components/shadcn/ui/input";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -33,8 +33,8 @@ export default function MakeForm({
   const form = useForm<z.infer<typeof makeSchema>>({
     resolver: zodResolver(makeSchema),
     defaultValues: {
-      make_id: make?.make_id || "",
-      name: make?.name || "",
+      make_id: make?.make_id || '',
+      name: make?.name || '',
     },
   });
 
@@ -48,13 +48,13 @@ export default function MakeForm({
     mutationFn: updateMake,
   });
 
-  const handleSubmit = async (values: TMake) => {
+  const handleSubmit = async (values: z.infer<typeof makeSchema>) => {
     try {
       console.log("values: ", values);
 
       await (make?.make_id
-        ? mutateAsyncUpdate(values)
-        : mutateAsyncCreate(values));
+        ? mutateAsyncUpdate(values as TMakeUpdate)
+        : mutateAsyncCreate(values as TMakeCreate));
 
       handleOpenChange(false);
 
@@ -81,7 +81,7 @@ export default function MakeForm({
               <FormControl>
                 <Input placeholder="Marca" {...field} />
               </FormControl>
-              <FormDescription>Marca que se quiere agregar.</FormDescription>
+              <FormDescription>El nombre de la marca.</FormDescription>
               <FormMessage />
             </FormItem>
           )}

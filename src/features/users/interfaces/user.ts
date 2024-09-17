@@ -1,4 +1,3 @@
-import { RolesEnum } from "../consts/roles";
 
 export type TUser = {
   user_id: string;

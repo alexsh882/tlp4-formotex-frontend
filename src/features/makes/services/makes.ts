@@ -1,5 +1,5 @@
 import { api } from "@/features/common/api";
-import { TMake } from "../interfaces/make";
+import { TMake, TMakeCreate, TMakeUpdate } from "../interfaces/make";
 
 type GetMakesParams = URLSearchParams | undefined;
 
@@ -17,7 +17,7 @@ export async function getMakes(params: GetMakesParams) {
   }
 }
 
-export async function createMake(make: TMake) {
+export async function createMake(make: TMakeCreate) {
   try {
     const response = await api.post<TMake>("/api/makes", make);
     console.log("createMake response: ", response.data);
@@ -29,7 +29,7 @@ export async function createMake(make: TMake) {
   }
 }
 
-export async function updateMake(make: TMake) {
+export async function updateMake(make: TMakeUpdate) {
   try {
     const response = await api.patch<TMake>(`/api/makes/${make.make_id}`, make);
     console.log("updateMake response: ", response.data);
