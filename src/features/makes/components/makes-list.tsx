@@ -11,6 +11,7 @@ import {
 } from "@/components/shadcn/ui/table";
 import { TMake } from "../interfaces/make";
 import MakeModal from "./make-modal";
+import MakeDeleteButton from "./make-delete-button";
 
 type MakesListProps = {
   makes: TMake[];
@@ -40,7 +41,7 @@ export default function MakesList(props: MakesListProps) {
                   }
                   make={make}
                 />
-                <Button variant="destructive">Eliminar</Button>
+                <MakeDeleteButton make_id={make.make_id} />
               </TableCell>
             </TableRow>
           ))}

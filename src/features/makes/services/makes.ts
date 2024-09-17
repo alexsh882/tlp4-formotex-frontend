@@ -40,3 +40,15 @@ export async function updateMake(make: TMakeUpdate) {
     throw error;
   }
 }
+
+export async function deleteMake(make_id: string) {
+  try {
+    const response = await api.delete<TMake>(`/api/makes/${make_id}`);
+    console.log("deleteMake response: ", response.data);
+
+    return response.data;
+  } catch (error) {
+    console.error("deleteMake error: ", error);
+    throw error;
+  }
+}
