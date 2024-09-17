@@ -2,7 +2,7 @@
 // import DownloadTutorial from "@/features/landing/tutorial/download-tutorial";
 // import Footer from "@/features/ui/footer";
 
-export default function App() {
+export default function Home() {
   return (
     <main className="h-full">
       <div>{/* <Hero /> */}</div>
