@@ -6,8 +6,6 @@ import { useParams } from "react-router-dom";
 export default function InventoryEntryEdit() {
   const { inventory_entry_id } = useParams();
 
-  console.log(inventory_entry_id);
-
   const {
     data: inventoryEntry,
     isLoading,
