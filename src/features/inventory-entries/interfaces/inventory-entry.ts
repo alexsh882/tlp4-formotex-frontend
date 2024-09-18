@@ -38,7 +38,7 @@ export const EquipmentStatusLabels = [
     value: EquipmentStatus.MAINTENANCE,
   },
   {
-    label: "Desechado",
+    label: "Dado de baja",
     value: EquipmentStatus.DISPOSED,
   },
 ];
