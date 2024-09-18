@@ -12,7 +12,7 @@ export const inventoryEntryOutSchema = z
       coerce: true,
     }),
   })
-  .refine((data) => data.date_in < data.date_out, {
+  .refine((data) => data.date_in <= data.date_out, {
     path: ["date_out"],
     message: "La fecha de salida debe ser mayor a la fecha de entrada",
   });
