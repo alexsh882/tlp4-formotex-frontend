@@ -20,7 +20,6 @@ type InventoriesListProps = {
 };
 
 export default function InventoryEntriesList(props: InventoriesListProps) {
-
   const navigate = useNavigate();
 
   return (
@@ -61,8 +60,26 @@ export default function InventoryEntriesList(props: InventoriesListProps) {
                 {inventoryEntry.user?.names ?? "Sin usuario"}
               </TableCell>
               <TableCell className="space-x-2 text-right">
-                <Button variant="secondary" onClick={() => navigate({pathname: `/inventory-entries/${inventoryEntry.inventory_entry_id}/edit`})}>Editar</Button>
-                <Button variant="destructive">Eliminar</Button>
+                <Button
+                  variant="secondary"
+                  onClick={() =>
+                    navigate({
+                      pathname: `/inventory-entries/${inventoryEntry.inventory_entry_id}/edit`,
+                    })
+                  }
+                >
+                  Editar
+                </Button>
+                <Button
+                  variant="default"
+                  onClick={() =>
+                    navigate({
+                      pathname: `/inventory-entries/${inventoryEntry.inventory_entry_id}/show`,
+                    })
+                  }
+                >
+                  Ver
+                </Button>
               </TableCell>
             </TableRow>
           ))}

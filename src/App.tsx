@@ -16,6 +16,7 @@ import InventoriesPage from "./pages/inventories";
 import UsersPage from "./pages/users";
 import InventoryEntryCreate from "./pages/inventory-entries/create";
 import InventoryEntryEdit from "./pages/inventory-entries/edit";
+import InventoryEntryShow from "./pages/inventory-entries/show";
 
 const router = createBrowserRouter([
   {
@@ -32,9 +33,16 @@ const router = createBrowserRouter([
       { path: "/equipment-types", element: <EquipmentTypesPage /> },
       { path: "/makes", element: <MakesPage /> },
       { path: "/users", element: <UsersPage /> },
-      { path: "/inventory-entries", element: <InventoryEntriesPage /> },      
-      { path: "/inventory-entries/create", element: <InventoryEntryCreate /> },  
-      { path: "/inventory-entries/:inventory_entry_id/edit", element: <InventoryEntryEdit /> },  
+      { path: "/inventory-entries", element: <InventoryEntriesPage /> },
+      { path: "/inventory-entries/create", element: <InventoryEntryCreate /> },
+      {
+        path: "/inventory-entries/:inventory_entry_id/edit",
+        element: <InventoryEntryEdit />,
+      },
+      {
+        path: "/inventory-entries/:inventory_entry_id/show",
+        element: <InventoryEntryShow />,
+      },
 
       {
         path: "*",

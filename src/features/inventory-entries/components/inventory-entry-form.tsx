@@ -42,7 +42,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/shadcn/ui/popover";
-import { cn } from "@/lib/utils";
+import { cn, formatDateToString } from "@/lib/utils";
 import { CaretSortIcon } from "@radix-ui/react-icons";
 import {
   Command,
@@ -54,8 +54,6 @@ import {
 } from "@/components/shadcn/ui/command";
 import { CalendarIcon, CheckIcon } from "lucide-react";
 import { Calendar } from "@/components/shadcn/ui/calendar";
-import { format } from "date-fns";
-import { es } from "date-fns/locale";
 import { useState } from "react";
 
 type InventoryEntryFormProps = {
@@ -323,7 +321,7 @@ export default function InventoryEntryForm({
                       )}
                     >
                       {field.value
-                        ? format(field.value, "PPP", { locale: es })
+                        ? formatDateToString(field.value, "long")
                         : "Selecciona una fecha"}
                       <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
                     </Button>
