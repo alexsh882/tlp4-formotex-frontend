@@ -1,11 +1,21 @@
 import { z } from "zod";
 import { EquipmentStatus } from "../interfaces/inventory-entry";
 
-export const inventoryEntryOutSchema = z.object({
-  date_out: z.date({
-    message: "La fecha de salida debe ser una fecha válida",
-  }),
-});
+export const inventoryEntryOutSchema = z
+  .object({
+    date_in: z.date({
+      message: "La fecha de entrada debe ser una fecha válida",
+      coerce: true,
+    }),
+    date_out: z.date({
+      message: "La fecha de salida debe ser una fecha válida",
+      coerce: true,
+    }),
+  })
+  .refine((data) => data.date_in < data.date_out, {
+    path: ["date_out"],
+    message: "La fecha de salida debe ser mayor a la fecha de entrada",
+  });
 
 export const inventoryEntrySchema = z.object({
   inventory_entry_id: z.string().uuid().optional(),
