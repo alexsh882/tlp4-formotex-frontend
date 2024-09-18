@@ -1,6 +1,12 @@
 import { z } from "zod";
 import { EquipmentStatus } from "../interfaces/inventory-entry";
 
+export const inventoryEntryOutSchema = z.object({
+  date_out: z.date({
+    message: "La fecha de salida debe ser una fecha válida",
+  }),
+});
+
 export const inventoryEntrySchema = z.object({
   inventory_entry_id: z.string().uuid().optional(),
   serial: z
@@ -28,11 +34,13 @@ export const inventoryEntrySchema = z.object({
       message: "La fecha de salida debe ser una fecha válida",
     })
     .optional(),
-  observations: z.string({
-    message: "Las observaciones son requeridas",
-  }).min(2, {
-    message: "Al menos dos caracteres",
-  }),
+  observations: z
+    .string({
+      message: "Las observaciones son requeridas",
+    })
+    .min(2, {
+      message: "Al menos dos caracteres",
+    }),
   equipment_id: z
     .string({
       message: "El equipo es requerido",
