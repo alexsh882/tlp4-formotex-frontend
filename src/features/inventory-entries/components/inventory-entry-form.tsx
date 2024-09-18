@@ -141,8 +141,6 @@ export default function InventoryEntryForm({
     }
   };
 
-  console.log("form: ", form.formState.errors);
-
   return (
     <Form {...form}>
       <form
