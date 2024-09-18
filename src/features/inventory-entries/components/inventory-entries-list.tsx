@@ -33,6 +33,7 @@ export default function InventoryEntriesList(props: InventoriesListProps) {
             <TableHead className="">Estado</TableHead>
             <TableHead className="">Depósito</TableHead>
             <TableHead className="">Ingresado por</TableHead>
+            <TableHead className="">Salida</TableHead>
             <TableHead className="text-right">Acciones</TableHead>
           </TableRow>
         </TableHeader>
@@ -58,6 +59,11 @@ export default function InventoryEntriesList(props: InventoriesListProps) {
               </TableCell>
               <TableCell className="">
                 {inventoryEntry.user?.names ?? "Sin usuario"}
+              </TableCell>
+              <TableCell className="">
+                {inventoryEntry.date_out
+                  ? formatDateUTC(inventoryEntry.date_out.toString())
+                  : "Aún en inventario"}
               </TableCell>
               <TableCell className="space-x-2 text-right">
                 <Button
@@ -86,7 +92,7 @@ export default function InventoryEntriesList(props: InventoriesListProps) {
         </TableBody>
         <TableFooter>
           <TableRow>
-            <TableCell colSpan={5}>Total</TableCell>
+            <TableCell colSpan={6}>Total</TableCell>
             <TableCell className="text-right">
               {props.inventoryEntries.length}
             </TableCell>
